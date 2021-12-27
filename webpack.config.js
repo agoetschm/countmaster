@@ -6,7 +6,6 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: {
     game: './src/game.ts',
-    model: './src/model.ts',
   },
   module: {
     rules: [
