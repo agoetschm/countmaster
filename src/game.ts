@@ -29,15 +29,14 @@ const config = {
 }
 
 const game: Phaser.Game = new Phaser.Game(config)
-let square: Phaser.Physics.Matter.Sprite
 
+let square: Phaser.Physics.Matter.Sprite
 let collectedOperationsText: Phaser.GameObjects.Text
 let scoreText: Phaser.GameObjects.Text
-
 let cursors: Phaser.Types.Input.Keyboard.CursorKeys
 
 
-let level: Model.Level = Levels.levels[0]
+let level: Model.Level = Levels.levels[levelFromUrl(window.location.search)]
 
 const gateSpeed = level.gateSpeed
 const squareSpeed = level.squareSpeed
@@ -50,6 +49,8 @@ function preload() {
 }
 
 function create() {
+  cursors = this.input.keyboard.createCursorKeys()
+
   this.add.image(gameWidth / 2, gameHeight / 2, 'sky')
   this.add.image(gameWidth / 2, gameHeight / 2, 'road')
 
@@ -81,8 +82,6 @@ function create() {
       i += 1
     }
   }
-
-  cursors = this.input.keyboard.createCursorKeys()
 }
 
 function update() {
@@ -198,4 +197,15 @@ function gateLineOperationsString(gateLine: Model.GateLine): string {
     }
   }
   return result
+}
+
+function levelFromUrl(queryString: string): number {
+  const urlParams = new URLSearchParams(queryString)
+  const level = urlParams.get("level")
+  console.log(+level)
+  if (level != "" && +level != NaN) {
+    return +level
+  } else {
+    return 0
+  }
 }

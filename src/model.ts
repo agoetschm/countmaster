@@ -18,7 +18,7 @@ export type Gate = {
 };
 
 export enum Operation {
-  Multiplication = "x",
+  Multiplication = "×",
   Division = "÷",
   Addition = "+",
   Substraction = "-",

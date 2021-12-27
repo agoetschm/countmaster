@@ -93,5 +93,72 @@ export const levels: Model.Level[] = [
     ],
     squareSpeed: 20,
     gateSpeed: 10,
+  },
+  {
+    gateLines: [
+      {
+        gates: [
+          {
+            operation: Model.Operation.Power,
+            magnitude: 3
+          },
+          {
+            operation: Model.Operation.Addition,
+            magnitude: 100
+          }
+        ],
+        position: 0,
+      },
+      {
+        gates: [
+          {
+            operation: Model.Operation.Multiplication,
+            magnitude: 0
+          },
+          {
+            operation: Model.Operation.Addition,
+            magnitude: 0
+          }
+        ],
+        position: 300,
+      },
+      {
+        gates: [
+          {
+            operation: Model.Operation.Multiplication,
+            magnitude: 0
+          },
+          {
+            operation: Model.Operation.Multiplication,
+            magnitude: 1
+          },
+          {
+            operation: Model.Operation.Multiplication,
+            magnitude: 0
+          },
+          {
+            operation: Model.Operation.Multiplication,
+            magnitude: 1
+          }
+        ],
+        position: 500,
+      },
+      {
+        // TODO something weird is going on with this one
+        gates: [
+          {
+            operation: Model.Operation.Multiplication,
+            magnitude: 1.1
+          },
+          {
+            operation: Model.Operation.Addition,
+            magnitude: 10
+          },
+        ],
+        position: 500,
+      },
+    ],
+    squareSpeed: 20,
+    gateSpeed: 10,
   }
 ]
