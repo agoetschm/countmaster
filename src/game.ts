@@ -6,7 +6,7 @@ const gameWidth = 800
 const gameHeight = 600
 const roadWidth = 400
 const gateHeight = 40
-const squareScale = 3
+const squareScale = 10
 const textStyle = { fontFamily: 'Courier, serif', color: '#000', fontSize: '28px' }
 
 const initialScore = 10
@@ -107,8 +107,8 @@ function update() {
     opsText += gateLineOperationsString(gateLine)
   }
 
-  square.displayWidth = score * squareScale
-  square.displayHeight = score * squareScale
+  square.displayWidth = Math.sqrt(score) * squareScale
+  square.displayHeight = Math.sqrt(score) * squareScale
 
   collectedOperationsText.setText(opsText)
   scoreText.setText("= " + (Math.round(score * 100) / 100).toString())
@@ -167,6 +167,8 @@ function applyOperation(x: number, gate: Model.Gate): number {
       return x + gate.magnitude
     case Model.Operation.Substraction:
       return x - gate.magnitude
+    case Model.Operation.Power:
+      return Math.pow(x, gate.magnitude)
   }
 }
 

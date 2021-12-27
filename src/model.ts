@@ -22,7 +22,7 @@ export enum Operation {
   Division = "÷",
   Addition = "+",
   Substraction = "-",
-  Power = "^", // TODO
+  Power = "^",
   Root = "root", // TODO
   // Exponentiation,
   // Logarithm
