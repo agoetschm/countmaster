@@ -91,6 +91,7 @@ export const levels: Model.Level[] = [
         position: 1300,
       },
     ],
+    end: 1500,
     squareSpeed: 20,
     gateSpeed: 10,
   },
@@ -183,6 +184,27 @@ export const levels: Model.Level[] = [
         position: 1100,
       },
     ],
+    end: 1300,
+    squareSpeed: 20,
+    gateSpeed: 10,
+  },
+  {
+    gateLines: [
+      {
+        gates: [
+          {
+            operation: Model.Operation.Division,
+            magnitude: 2
+          },
+          {
+            operation: Model.Operation.Substraction,
+            magnitude: 20
+          }
+        ],
+        position: 0,
+      },
+    ],
+    end: 200,
     squareSpeed: 20,
     gateSpeed: 10,
   }

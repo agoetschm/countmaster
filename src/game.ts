@@ -31,6 +31,7 @@ const config = {
 const game: Phaser.Game = new Phaser.Game(config)
 
 let square: Phaser.Physics.Matter.Sprite
+let end: Phaser.Physics.Matter.Sprite
 let collectedOperationsText: Phaser.GameObjects.Text
 let scoreText: Phaser.GameObjects.Text
 let cursors: Phaser.Types.Input.Keyboard.CursorKeys
@@ -46,6 +47,7 @@ function preload() {
   this.load.image('road', require("./assets/road.png"))
   this.load.image('gate_half', require("./assets/gate_half.png"))
   this.load.image('square', require("./assets/square.png"))
+  this.load.image('end', require("./assets/end.png"))
 }
 
 function create() {
@@ -56,6 +58,9 @@ function create() {
 
   scoreText = this.add.text(10, gameHeight - 40, "", textStyle)
   collectedOperationsText = this.add.text(10, 10, "", textStyle)
+
+  end = this.physics.add.sprite(gameWidth / 2, -level.end, 'end')
+  end.setVelocityY(10 * gateSpeed)
 
   square = this.physics.add.sprite(gameWidth / 2, gameHeight * 2 / 3, 'square')
 
@@ -106,6 +111,10 @@ function update() {
     opsText += gateLineOperationsString(gateLine)
   }
 
+  if (score < 0) {
+    score = 0
+  }
+
   square.displayWidth = Math.sqrt(score) * squareScale
   square.displayHeight = Math.sqrt(score) * squareScale
 
@@ -128,6 +137,14 @@ function update() {
   }
   if (square.x - square.displayWidth / 2 <= gameWidth / 2 - roadWidth / 2) {
     square.x = gameWidth / 2 - roadWidth / 2 + square.displayWidth / 2
+  }
+
+  if (end.y >= square.y) {
+    this.scene.pause()
+  }
+
+  if (score <= 0) {
+    this.scene.pause()
   }
 }
 

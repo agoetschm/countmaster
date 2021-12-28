@@ -1,5 +1,6 @@
 export type Level = {
   gateLines: GateLine[]
+  end: number
   squareSpeed: number
   gateSpeed: number
 }
